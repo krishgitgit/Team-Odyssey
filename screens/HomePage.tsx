@@ -221,6 +221,22 @@ export function HomePage({ onOpenAttendance }: { onOpenAttendance?: () => void }
         </ScrollView>
         <Dots count={REELS.length} index={reels.index} />
 
+        <Text style={[styles.sectionTitle, styles.actionsHeading]}>Quick Actions</Text>
+        <View style={styles.actionsList}>
+          <Pressable style={styles.actionCard} onPress={() => onOpenAttendance?.()}>
+            <AttendanceIcon />
+            <Text style={styles.actionTitle}>Check Your Attendance</Text>
+          </Pressable>
+          <Pressable style={styles.actionCard} onPress={() => {}}>
+            <ProjectsIcon />
+            <Text style={styles.actionTitle}>Your Projects</Text>
+          </Pressable>
+          <Pressable style={styles.actionCard} onPress={() => {}}>
+            <ProgressIcon />
+            <Text style={styles.actionTitle}>Track Your Progress</Text>
+          </Pressable>
+        </View>
+
         <SectionHeader title="Upcoming Events" />
         <ScrollView
           ref={events.scrollRef}
@@ -259,22 +275,6 @@ export function HomePage({ onOpenAttendance }: { onOpenAttendance?: () => void }
           ))}
         </ScrollView>
         <Dots count={EVENTS.length} index={events.index} />
-
-        <Text style={[styles.sectionTitle, styles.actionsHeading]}>Quick Actions</Text>
-        <View style={styles.actionsList}>
-          <Pressable style={styles.actionCard} onPress={() => onOpenAttendance?.()}>
-            <AttendanceIcon />
-            <Text style={styles.actionTitle}>Check Your Attendance</Text>
-          </Pressable>
-          <Pressable style={styles.actionCard} onPress={() => {}}>
-            <ProjectsIcon />
-            <Text style={styles.actionTitle}>Your Projects</Text>
-          </Pressable>
-          <Pressable style={styles.actionCard} onPress={() => {}}>
-            <ProgressIcon />
-            <Text style={styles.actionTitle}>Track Your Progress</Text>
-          </Pressable>
-        </View>
       </ScrollView>
     </View>
   );
