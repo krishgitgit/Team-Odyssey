@@ -17,9 +17,17 @@ const logoImage = require('../assets/odyssey/logo.png');
 
 const HEADER_HEIGHT = 200;
 
-export function LoginPage() {
+type Props = {
+  onLoginSuccess?: () => void;
+};
+
+export function LoginPage({ onLoginSuccess }: Props) {
   const [netId, setNetId] = useState('');
   const [password, setPassword] = useState('');
+
+  const finishLogin = () => {
+    onLoginSuccess?.();
+  };
 
   return (
     <View style={styles.root}>
@@ -67,7 +75,7 @@ export function LoginPage() {
 
               <Pressable
                 style={({ pressed }) => [styles.loginBtn, pressed && styles.pressed]}
-                onPress={() => {}}
+                onPress={finishLogin}
               >
                 <Text style={styles.loginBtnText}>LOGIN</Text>
               </Pressable>
@@ -80,7 +88,7 @@ export function LoginPage() {
 
               <Pressable
                 style={({ pressed }) => [styles.googleBtn, pressed && styles.pressed]}
-                onPress={() => {}}
+                onPress={finishLogin}
               >
                 <Text style={styles.googleG}>G</Text>
                 <Text style={styles.googleBtnText}>Login with Google</Text>
