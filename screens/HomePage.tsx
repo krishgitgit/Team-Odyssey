@@ -161,7 +161,7 @@ function useAutoCarousel(length: number) {
   return { index, scrollRef, onScrollEnd };
 }
 
-export function HomePage() {
+export function HomePage({ onOpenAttendance }: { onOpenAttendance?: () => void }) {
   const reels = useAutoCarousel(REELS.length);
   const events = useAutoCarousel(EVENTS.length);
 
@@ -262,7 +262,7 @@ export function HomePage() {
 
         <Text style={[styles.sectionTitle, styles.actionsHeading]}>Quick Actions</Text>
         <View style={styles.actionsList}>
-          <Pressable style={styles.actionCard} onPress={() => {}}>
+          <Pressable style={styles.actionCard} onPress={() => onOpenAttendance?.()}>
             <AttendanceIcon />
             <Text style={styles.actionTitle}>Check Your Attendance</Text>
           </Pressable>
